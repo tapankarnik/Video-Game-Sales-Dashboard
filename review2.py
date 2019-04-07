@@ -6,7 +6,7 @@ import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot
 
 
-df = pd.read_csv('vgsaleswithratings.csv')
+df = pd.read_csv('data/vgsaleswithratings.csv')
 # df = df.dropna()
 # df.head()
 
