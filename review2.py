@@ -15,44 +15,48 @@ df = pd.read_csv('data/vgsaleswithratings.csv')
 
 
 #Plot 1
-x1 = df.groupby(['Year_of_Release']).count() 
-x1 = x1['Global_Sales'] 
-y1 = x1.index.astype(int)
+def plot1graph(genre_value):
+    if(genre_value == 'all'):
+        x1 = df.groupby(['Year_of_Release']).count()['Global_Sales'] 
+    else:
+        x1 = df[df['Genre'] == genre_value].groupby(['Year_of_Release']).count()['Global_Sales'] 
+    y1 = x1.index.astype(int)
 
-data1 = [go.Bar(x=y1, y=x1)]
-layout = dict(
-    title='Time series with range slider and selectors - Video Game data',
-    xaxis=dict(
-        rangeselector=dict(
-            buttons=list([
-                dict(count=1,
-                     label='1m',
-                     step='month',
-                     stepmode='backward'),
-                dict(count=6,
-                     label='6m',
-                     step='month',
-                     stepmode='backward'),
-                dict(count=1,
-                    label='YTD',
-                    step='year',
-                    stepmode='todate'),
-                dict(count=1,
-                    label='1y',
-                    step='year',
-                    stepmode='backward'),
-                dict(step='all')
-            ])
+    data1 = [go.Bar(x=y1, y=x1)]
+    layout = dict(
+        title='Time series with range slider and selectors - Video Game data',
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=1,
+                        label='1m',
+                        step='month',
+                        stepmode='backward'),
+                    dict(count=6,
+                        label='6m',
+                        step='month',
+                        stepmode='backward'),
+                    dict(count=1,
+                        label='YTD',
+                        step='year',
+                        stepmode='todate'),
+                    dict(count=1,
+                        label='1y',
+                        step='year',
+                        stepmode='backward'),
+                    dict(step='all')
+                ])
+            ),
+            rangeslider=dict(
+                visible = True
+            ),
+            type='date'
         ),
-        rangeslider=dict(
-            visible = True
-        ),
-        type='date'
-    ),
-    paper_bgcolor= 'rgb(230, 230, 230)',
-    plot_bgcolor= 'rgb(230, 230, 230)'
-)
-fig1 = dict(data=data1, layout=layout)
+        paper_bgcolor= 'rgb(230, 230, 230)',
+        plot_bgcolor= 'rgb(230, 230, 230)'
+    )
+    fig1 = dict(data=data1, layout=layout)
+    return fig1
 # py.plot(fig, filename='Video Game Sales.html')
 
 

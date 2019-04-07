@@ -89,9 +89,28 @@ app.layout = html.Div([
                 style={
                     'textAlign': 'center'
                 }),
+                dcc.Dropdown(
+                    id='plot1-dropdown',
+                    options=[
+                        {'label': 'All','value':'all'},
+                        {'label': 'Sports', 'value': 'Sports'},
+                        {'label': 'Platform', 'value': 'Platform'},
+                        {'label': 'Racing', 'value': 'Racing'},
+                        {'label': 'Role-Playing', 'value': 'Role-Playing'},
+                        {'label': 'Puzzle', 'value': 'Puzzle'},
+                        {'label': 'Misc', 'value': 'Misc'},
+                        {'label': 'Shooter', 'value': 'Shooter'},
+                        {'label': 'Simulation', 'value': 'Simulation'},
+                        {'label': 'Action', 'value': 'Action'},
+                        {'label': 'Fighting', 'value': 'Fighting'},
+                        {'label': 'Adventure', 'value': 'Adventure'},
+                        {'label': 'Strategy', 'value': 'Strategy'},
+                    ],
+                    value='all'
+                ),
                 dcc.Graph(
                     id='Plot1',
-                    figure = fig1,
+                    figure = plot1graph('all'),
                     style=dict(width='1000px'),
                 )
             ],style={'display': 'inline-block'}),
@@ -157,6 +176,13 @@ external_css = ["https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.
                 "//fonts.googleapis.com/css?family=Raleway:400,300,600",
                 "//fonts.googleapis.com/css?family=Dosis:Medium",
                 "https://cdn.rawgit.com/plotly/dash-app-stylesheets/0e463810ed36927caf20372b6411690692f94819/dash-drug-discovery-demo-stylesheet.css"]
+
+@app.callback(
+    dash.dependencies.Output('Plot1', 'figure'),
+    [dash.dependencies.Input('plot1-dropdown', 'value')])
+def update_plot1(genre_value):
+    return plot1graph(genre_value)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True,dev_tools_hot_reload = True)
