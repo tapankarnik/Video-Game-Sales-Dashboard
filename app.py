@@ -15,7 +15,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-BACKGROUND = 'rgb(230, 230, 230)'
+
 
 colors = {
     'background': '#29E3FF',
@@ -25,15 +25,6 @@ colors = {
 
 app.layout = html.Div([
     html.Div([
-        # html.Img(src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/logo/new-branding/dash-logo-by-plotly-stripe.png",
-        #         style={
-        #             'height': '100px',
-        #             'float': 'right',
-        #             'position': 'relative'
-        #             # 'bottom': '0px',
-        #             # 'left': '00px'
-        #         },
-        #         ),
         html.H2('Dash',
                 style={
                     'position': 'relative',
@@ -64,31 +55,40 @@ app.layout = html.Div([
                     'font-size': '6.0rem',
                     'color': '#4D637F'
                 }),
-    ], className='row twelve columns', style={'position': 'relative', 'right': '15px','backgroundColor' :BACKGROUND}),
-
-    # html.H1(
-    #     children='Video Game Sales with Ratings Dashboard',
-    #     style={
-    #         'textAlign': 'center',
-    #         'color': colors['text']
-    #         # 'backgroundColor': colors['']
-    #     }
-    # ),
+        html.Img(src="assets/dash-logo-by-plotly-stripe.png",
+                style={
+                    'height': '110px',
+                    'float': 'right',
+                    'position': 'relative'
+                },
+                ),        
+        html.Hr(style={'margin': '30', 'margin-bottom': '5'}),
+    ], style={'margin':30,'position': 'relative', 'right': '15px','backgroundColor' :BACKGROUND}),
 
     html.Div([
-        html.H1('This is a Dashboard having various visualisations taken from the Video Game Sales with Ratings dataset.',
+        html.H3('This is a Dashboard having various visualisations taken from the Video Game Sales with Ratings dataset.',
         style={
-            'textAlign': 'left',
+            # 'textAlign': 'left',
             'color': colors['text'],
-            'backgroundColor':BACKGROUND
+            'backgroundColor':BACKGROUND,
+            'margin': '30px'
         }),
         html.Br(),
         html.Div([
             html.Div([
-                html.Span('Plot 1',
-                style={
-                    'textAlign': 'center'
-                }),
+                html.Div('Plot 1',
+                    style={
+                        'textAlign': 'center'
+                        # 'margin': '30px',
+                    }
+                ),
+                html.Div('From this plot, we can see that approx. from the 2000s there is a boom in the release of video games. More and more developers\n started releasing games and it peaked at 2008 and 2009 after which the number declined. This might have happened due to the\n increase in price of the biggest titles. The resize bar in this plot allows us to zoom into the plot and see detailed information.\n\n The following Graph has been initialized with all genres of games. Use the Dropdown list below to view data for individual genres',
+                    style={
+                        'white-space': 'pre',
+                        'margin': '30px',
+                        # 'fontSize':15
+                    }
+                ),
                 dcc.Dropdown(
                     id='plot1-dropdown',
                     options=[
@@ -111,14 +111,23 @@ app.layout = html.Div([
                 dcc.Graph(
                     id='Plot1',
                     figure = plot1graph('all'),
-                    style=dict(width='1000px'),
+                    style=dict(width='1000px')
+                    # animate = True 
                 )
-            ],style={'display': 'inline-block'}),
+            ],style={'display': 'inline-block','margin':5}),
             html.Div([
-                html.Span('Plot 2',
+                html.Div('Plot 2',
                 style={
-                    'textAlign': 'center'
+                    'textAlign': 'center',
+                    'white-space': 'pre'
                 }),
+                html.Br(),
+                html.Div('This visualization shows us the number of unique games released on each gaming console as a pie chart. At a \nglance, it is apparent that the PS2 and Nintendo DS have the greatest number of games released. This chart \nis for those people who are worried about buying a console without enough games released on it. The interactivity \nin this pie chart allows us to hover the mouse over a section and see the numeric value and percentage of the\n portion occupied by the game console.',
+                style={
+                    'textAlign': 'center',
+                    # 'margin': '20px',
+                    'white-space': 'pre'
+                }),                
                 dcc.Graph(
                     id='Plot2',
                     style=dict(width='800px'),
@@ -134,13 +143,24 @@ app.layout = html.Div([
                         'title' : 'Plote 2'
                     }
                 )
-            ],style={'display': 'inline-block'})
-        ],style={'width': '100%', 'display': 'inline-block'}),
+            ],style={'display': 'inline-block','margin':5})
+        ],style={'width': '100%', 'display': 'inline-block','margin':5}),
         html.Div(children='Plot3',
-        style={
-            'textAlign': 'center',
-            'color': colors['text']
-        }),        
+            style={
+                'textAlign': 'center',
+                'color': colors['text'],
+                'margin': '30px',
+                'fontSize':19
+            }
+        ), 
+        html.Div(children='This plot shows us the top 20 developers by the number of games released. It gives us information about prolific developers in the industry and is a good measure to see if they make quality games. There is a very good chance that a new game by any of these developers will be a big hit.',
+            style={
+                'textAlign': 'center',
+                'color': colors['text'],
+                'margin': '30px',
+                'fontSize':19            
+            }
+        ),        
         dcc.Graph(
             id = 'Plot3',
             figure = {
@@ -150,13 +170,22 @@ app.layout = html.Div([
                     'plot_bgcolor': BACKGROUND
                 }
             },
-            
         ),
         html.Div([
-            html.Div('Plot4',
+            html.Div('Plot 4',
+            style = {
+                'margin': '30px',
+                'fontSize':19,
+                # 'textAlign':'center'
+            }),
+            html.Div("This plot shows us the correlation of the regional sales, global sales and the critic score and count. The most important part  of this graph should be the critic score. We need to see if the critic score corresponds with the various sales data. Here the critic score seems to correspond the most with the global sales and least with the Japan Sales. This means that a higher critic score corresponds to a higher global sales number while it may not be true considering Sales in Japan.",
             style={
-                'textAlign': 'center',
-                'color': colors['text']
+                # 'textAlign': 'center',
+                # 'color': colors['text'], 
+                'margin': '30px',
+                'top':'50px',
+                # 'fontColor':'blue',
+                'fontSize':19
             },
             className = 'two columns'
             ),
@@ -170,12 +199,14 @@ app.layout = html.Div([
         ],className='row',style={'width': '100%', 'display': 'inline-block'})
         #,style={'width': '50%', 'display': 'inline-block','float' : 'center','position':'relative'})
     ])
-],style = {'backgroundColor':BACKGROUND})
+],style = {'backgroundColor':BACKGROUND,'margin':30,'backgroundImage':'assets/zelda_bg.jpg'})
 
 external_css = ["https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css",
                 "//fonts.googleapis.com/css?family=Raleway:400,300,600",
                 "//fonts.googleapis.com/css?family=Dosis:Medium",
                 "https://cdn.rawgit.com/plotly/dash-app-stylesheets/0e463810ed36927caf20372b6411690692f94819/dash-drug-discovery-demo-stylesheet.css"]
+for css in external_css:
+    app.css.append_css({"external_url": css})
 
 @app.callback(
     dash.dependencies.Output('Plot1', 'figure'),

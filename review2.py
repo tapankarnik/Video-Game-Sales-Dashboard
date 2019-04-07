@@ -9,7 +9,8 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot
 df = pd.read_csv('data/vgsaleswithratings.csv')
 # df = df.dropna()
 # df.head()
-
+# BACKGROUND = BACKGROUND
+BACKGROUND = '#FFFFFF'
 
 # In[59]:
 
@@ -52,8 +53,8 @@ def plot1graph(genre_value):
             ),
             type='date'
         ),
-        paper_bgcolor= 'rgb(230, 230, 230)',
-        plot_bgcolor= 'rgb(230, 230, 230)'
+        paper_bgcolor= BACKGROUND,
+        plot_bgcolor= BACKGROUND
     )
     fig1 = dict(data=data1, layout=layout)
     return fig1
@@ -112,8 +113,8 @@ layout = {
   "title": "Correlation Map", 
   "xaxis": {"ticks": ""}, 
   "yaxis": {"ticks": ""},
-  'paper_bgcolor': 'rgb(230, 230, 230)',
-    'plot_bgcolor': 'rgb(230, 230, 230)'
+  'paper_bgcolor': BACKGROUND,
+    'plot_bgcolor': BACKGROUND
 }
 fig4 = dict(data = data, layout = layout)
 # py.plot(fig)
