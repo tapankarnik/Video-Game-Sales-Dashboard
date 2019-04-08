@@ -2,15 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from review2 import *
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import plotly.offline as py
-# import plotly.graph_objs as go
-# from plotly.offline import download_plotlyjs, plot
 
-
-# print(df)
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -20,7 +12,6 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 colors = {
     'background': '#29E3FF',
     'text': '#111111',
-    'wow' : '#29E3FF'
 }
 
 app.layout = html.Div([
@@ -68,7 +59,6 @@ app.layout = html.Div([
     html.Div([
         html.H3('This is a Dashboard having various visualisations taken from the Video Game Sales with Ratings dataset.',
         style={
-            # 'textAlign': 'left',
             'color': colors['text'],
             'backgroundColor':BACKGROUND,
             'margin': '30px'
@@ -79,14 +69,12 @@ app.layout = html.Div([
                 html.Div('Plot 1',
                     style={
                         'textAlign': 'center'
-                        # 'margin': '30px',
                     }
                 ),
                 html.Div('From this plot, we can see that approx. from the 2000s there is a boom in the release of video games. More and more developers\n started releasing games and it peaked at 2008 and 2009 after which the number declined. This might have happened due to the\n increase in price of the biggest titles. The resize bar in this plot allows us to zoom into the plot and see detailed information.\n\n The following Graph has been initialized with all genres of games. Use the Dropdown list below to view data for individual genres',
                     style={
                         'white-space': 'pre',
                         'margin': '30px',
-                        # 'fontSize':15
                     }
                 ),
                 dcc.Dropdown(
@@ -112,7 +100,6 @@ app.layout = html.Div([
                     id='Plot1',
                     figure = plot1graph('all'),
                     style=dict(width='1000px')
-                    # animate = True 
                 )
             ],style={'display': 'inline-block','margin':5}),
             html.Div([
@@ -125,7 +112,6 @@ app.layout = html.Div([
                 html.Div('This visualization shows us the number of unique games released on each gaming console as a pie chart. At a \nglance, it is apparent that the PS2 and Nintendo DS have the greatest number of games released. This chart \nis for those people who are worried about buying a console without enough games released on it. The interactivity \nin this pie chart allows us to hover the mouse over a section and see the numeric value and percentage of the\n portion occupied by the game console.',
                 style={
                     'textAlign': 'center',
-                    # 'margin': '20px',
                     'white-space': 'pre'
                 }),                
                 dcc.Graph(
@@ -176,15 +162,11 @@ app.layout = html.Div([
             style = {
                 'margin': '30px',
                 'fontSize':19,
-                # 'textAlign':'center'
             }),
             html.Div("This plot shows us the correlation of the regional sales, global sales and the critic score and count. The most important part  of this graph should be the critic score. We need to see if the critic score corresponds with the various sales data. Here the critic score seems to correspond the most with the global sales and least with the Japan Sales. This means that a higher critic score corresponds to a higher global sales number while it may not be true considering Sales in Japan.",
             style={
-                # 'textAlign': 'center',
-                # 'color': colors['text'], 
                 'margin': '30px',
                 'top':'50px',
-                # 'fontColor':'blue',
                 'fontSize':19
             },
             className = 'two columns'
@@ -197,7 +179,6 @@ app.layout = html.Div([
             
         )
         ],className='row',style={'width': '100%', 'display': 'inline-block'})
-        #,style={'width': '50%', 'display': 'inline-block','float' : 'center','position':'relative'})
     ])
 ],style = {'backgroundColor':BACKGROUND,'margin':30,'backgroundImage':'assets/zelda_bg.jpg'})
 
@@ -205,6 +186,7 @@ external_css = ["https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.
                 "//fonts.googleapis.com/css?family=Raleway:400,300,600",
                 "//fonts.googleapis.com/css?family=Dosis:Medium",
                 "https://cdn.rawgit.com/plotly/dash-app-stylesheets/0e463810ed36927caf20372b6411690692f94819/dash-drug-discovery-demo-stylesheet.css"]
+
 for css in external_css:
     app.css.append_css({"external_url": css})
 
