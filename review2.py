@@ -49,7 +49,11 @@ def plot1graph(genre_value):
             rangeslider=dict(
                 visible = True
             ),
-            type='date'
+            type='date',
+            title = 'Year'
+        ),
+        yaxis = dict(
+            title = 'Sales (in millions)'
         ),
         paper_bgcolor= BACKGROUND,
         plot_bgcolor= BACKGROUND

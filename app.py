@@ -68,7 +68,8 @@ app.layout = html.Div([
             html.Div([
                 html.Div('Plot 1',
                     style={
-                        'textAlign': 'center'
+                        'textAlign': 'center',
+                        'white-space': 'pre'
                     }
                 ),
                 html.Div('From this plot, we can see that approx. from the 2000s there is a boom in the release of video games. More and more developers\n started releasing games and it peaked at 2008 and 2009 after which the number declined. This might have happened due to the\n increase in price of the biggest titles. The resize bar in this plot allows us to zoom into the plot and see detailed information.\n\n The following Graph has been initialized with all genres of games. Use the Dropdown list below to view data for individual genres',
@@ -126,7 +127,7 @@ app.layout = html.Div([
                             'paper_bgcolor': BACKGROUND,
                             'plot_bgcolor': BACKGROUND
                         },
-                        'title' : 'Plote 2'
+                        'title' : 'Plot 2'
                     }
                 )
             ],style={'display': 'inline-block','margin':5})
@@ -152,6 +153,8 @@ app.layout = html.Div([
             figure = {
                 'data': data2,
                 'layout' : {
+                    'xaxis':{'title':'Names of developers'},
+                    'yaxis':{'title':'Number of Games Released'},
                     'paper_bgcolor': BACKGROUND,
                     'plot_bgcolor': BACKGROUND
                 }
