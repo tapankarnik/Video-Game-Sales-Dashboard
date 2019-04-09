@@ -7,9 +7,7 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot
 
 
 df = pd.read_csv('data/vgsaleswithratings.csv')
-# df = df.dropna()
-# df.head()
-# BACKGROUND = BACKGROUND
+
 BACKGROUND = '#FFFFFF'
 
 # In[59]:
@@ -58,7 +56,6 @@ def plot1graph(genre_value):
     )
     fig1 = dict(data=data1, layout=layout)
     return fig1
-# py.plot(fig, filename='Video Game Sales.html')
 
 
 
@@ -68,14 +65,10 @@ platformdata = df['Platform'].value_counts()
 platformdata = platformdata.sort_values()
 
 platformdata = platformdata.reset_index()
-# platformdata.head()
-# labels = ['Oxygen','Hydrogen','Carbon_Dioxide','Nitrogen']
-# values = [4500,2500,1053,500]
 labels = platformdata['index']
 values = platformdata['Platform']
 trace = go.Pie(labels=labels, values=values)
 data4 = [trace]
-# py.plot(data4)
 
 
 # platformdata.plot(kind='pie',labels='index', values='Platform')
@@ -88,7 +81,6 @@ df2 = df.copy()
 df2 = df2.drop_duplicates(subset = "Name") 
 df2 = df2['Developer'].value_counts().sort_values(ascending = False) 
 df2 = df2[:20] 
-# df2 = df2.sort_values()
 df2 = df2.reset_index()
 data2 = [go.Bar(x=df2['index'], y=df2['Developer'], name = 'Top 20 Developers by Number of Games Released', marker=dict(color='rgb(255, 0, 20)'))]
 
@@ -98,7 +90,6 @@ data2 = [go.Bar(x=df2['index'], y=df2['Developer'], name = 'Top 20 Developers by
 
 # Plot 4
 df2 = df.copy()
-# df2.head()
 df2.drop(['Name','Year_of_Release','Platform','Genre','Publisher','Developer','Rating','User_Count','User_Score'],axis = 1,inplace = True) 
 df2.dropna(inplace=True)
 trace = {
@@ -122,7 +113,6 @@ fig4 = dict(data = data, layout = layout)
 
 
 
-# df.corr().values
 
 
 

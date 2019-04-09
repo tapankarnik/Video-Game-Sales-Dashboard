@@ -180,7 +180,7 @@ app.layout = html.Div([
         )
         ],className='row',style={'width': '100%', 'display': 'inline-block'})
     ])
-],style = {'backgroundColor':BACKGROUND,'margin':30,'backgroundImage':'assets/zelda_bg.jpg'})
+],style = {'backgroundColor':BACKGROUND,'margin':30})
 
 external_css = ["https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css",
                 "//fonts.googleapis.com/css?family=Raleway:400,300,600",
@@ -198,4 +198,4 @@ def update_plot1(genre_value):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True,dev_tools_hot_reload = True)
+    app.run_server(debug=True,dev_tools_hot_reload = True)  
