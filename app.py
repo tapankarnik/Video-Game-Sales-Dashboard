@@ -1,7 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from review2 import *
+from plots import *
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -9,10 +9,10 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 
 
-colors = {
-    'background': '#29E3FF',
-    'text': '#111111',
-}
+# colors = {
+#     'background': '#29E3FF',
+#     'text': '#111111',
+# }
 
 app.layout = html.Div([
     html.Div([
@@ -59,7 +59,6 @@ app.layout = html.Div([
     html.Div([
         html.H3('This is a Dashboard having various visualisations taken from the Video Game Sales with Ratings dataset.',
         style={
-            'color': colors['text'],
             'backgroundColor':BACKGROUND,
             'margin': '30px'
         }),
@@ -121,9 +120,6 @@ app.layout = html.Div([
                     figure = {
                         'data': data4,
                         'layout': {
-                            'font': {
-                                'color': colors['text'],
-                            },
                             'paper_bgcolor': BACKGROUND,
                             'plot_bgcolor': BACKGROUND
                         },
@@ -135,7 +131,6 @@ app.layout = html.Div([
         html.Div(children='Plot3',
             style={
                 'textAlign': 'center',
-                'color': colors['text'],
                 'margin': '30px',
                 'fontSize':19
             }
@@ -143,7 +138,6 @@ app.layout = html.Div([
         html.Div(children='This plot shows us the top 20 developers by the number of games released. It gives us information about prolific developers in the industry and is a good measure to see if they make quality games. There is a very good chance that a new game by any of these developers will be a big hit.',
             style={
                 'textAlign': 'center',
-                'color': colors['text'],
                 'margin': '30px',
                 'fontSize':19            
             }

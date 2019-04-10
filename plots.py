@@ -1,9 +1,8 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 import plotly.offline as py
 import plotly.graph_objs as go
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot
+from plotly.offline import download_plotlyjs, plot
 
 
 df = pd.read_csv('data/vgsaleswithratings.csv')
